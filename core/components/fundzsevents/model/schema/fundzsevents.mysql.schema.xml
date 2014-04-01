@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model package="fundzsevents" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" phpdoc-package="fundzsevents" version="1.1">
 
-	<object class="fundzsEventsItem" table="fundzsevents_items" extends="xPDOSimpleObject">
-		<field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+	<object class="zsEvent" table="fundzs_events" extends="xPDOSimpleObject">
+		<field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+		<field key="city" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+		<field key="begin" dbtype="datetime" phptype="datetime" null="true" index="index" />
+		<field key="end" dbtype="datetime" phptype="datetime" null="true" index="index" />
 		<field key="description" dbtype="text" phptype="text" null="true" default="" />
+		<field key="comment" dbtype="text" phptype="text" null="true" default="" />
+		<field key="owner" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" index="index" />
 
-		<index alias="name" name="name" primary="false" unique="false" type="BTREE">
-			<column key="name" length="" collation="A" null="false" />
+        <index alias="begin" name="begin" primary="false" unique="false" type="BTREE">
+			<column key="begin" length="" collation="A" null="false" />
 		</index>
+		<index alias="owner" name="owner" primary="false" unique="false" type="BTREE">
+			<column key="owner" length="" collation="A" null="false" />
+		</index>
+		
+		<composite alias="Participants" class="zsParticipant" local="id" foreign="event" cardinality="many" owner="local" />
+		<aggregate alias="User" class="modUser" local="owner" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+	
+	<object class="zsParticipant" table="fundzs_participants" extends="xPDOSimpleObject">
+		<field key="uid" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+		<field key="event" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+
+		<index alias="uid" name="uid" primary="false" unique="false" type="BTREE">
+			<column key="uid" length="" collation="A" null="false" />
+		</index>
+		<index alias="event" name="event" primary="false" unique="false" type="BTREE">
+			<column key="event" length="" collation="A" null="false" />
+		</index>
+
+		<aggregate alias="User" class="modUser" local="uid" foreign="id" cardinality="one" owner="foreign" />
+		<aggregate alias="Event" class="zsEvent" local="uid" foreign="id" cardinality="one" owner="foreign" />
 	</object>
 
 </model>

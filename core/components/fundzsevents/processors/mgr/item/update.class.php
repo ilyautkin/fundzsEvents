@@ -2,11 +2,10 @@
 /**
  * Update an Item
  */
-class fundzsEventsItemUpdateProcessor extends modObjectUpdateProcessor {
-	public $objectType = 'fundzsEventsItem';
-	public $classKey = 'fundzsEventsItem';
+class zsEventUpdateProcessor extends modObjectUpdateProcessor {
+	public $objectType = 'zsEvent';
+	public $classKey = 'zsEvent';
 	public $languageTopics = array('fundzsevents');
-	public $permission = 'edit_document';
 }
 
-return 'fundzsEventsItemUpdateProcessor';
+return 'zsEventUpdateProcessor';

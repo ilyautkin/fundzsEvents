@@ -2,12 +2,12 @@
 /**
  * Remove an Item
  */
-class fundzsEventsItemRemoveProcessor extends modObjectRemoveProcessor {
+class zsEventRemoveProcessor extends modObjectRemoveProcessor {
 	public $checkRemovePermission = true;
-	public $objectType = 'fundzsEventsItem';
-	public $classKey = 'fundzsEventsItem';
+	public $objectType = 'zsEvent';
+	public $classKey = 'zsEvent';
 	public $languageTopics = array('fundzsevents');
 
 }
 
-return 'fundzsEventsItemRemoveProcessor';
+return 'zsEventRemoveProcessor';

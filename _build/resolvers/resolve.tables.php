@@ -11,7 +11,8 @@ if ($object->xpdo) {
 
 			$manager = $modx->getManager();
 			$objects = array(
-				'fundzsEventsItem',
+				'zsEvent',
+				'zsParticipant',
 			);
 			foreach ($objects as $tmp) {
 				$manager->createObjectContainer($tmp);

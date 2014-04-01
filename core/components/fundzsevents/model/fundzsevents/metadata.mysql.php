@@ -3,6 +3,7 @@
 $xpdo_meta_map = array (
   'xPDOSimpleObject' => 
   array (
-    0 => 'fundzsEventsItem',
+    0 => 'zsEvent',
+    1 => 'zsParticipant',
   ),
 );

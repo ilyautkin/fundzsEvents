@@ -2,10 +2,10 @@
 /**
  * Get an Item
  */
-class fundzsEventsItemGetProcessor extends modObjectGetProcessor {
-	public $objectType = 'fundzsEventsItem';
-	public $classKey = 'fundzsEventsItem';
+class zsEventGetProcessor extends modObjectGetProcessor {
+	public $objectType = 'zsEvent';
+	public $classKey = 'zsEvent';
 	public $languageTopics = array('fundzsevents:default');
 }
 
-return 'fundzsEventsItemGetProcessor';
+return 'zsEventGetProcessor';

@@ -15,7 +15,7 @@ fundzsEvents.panel.Home = function(config) {
 			,activeItem: 0
 			,hideMode: 'offsets'
 			,items: [{
-				title: _('fundzsevents_items')
+				title: _('fundzsevents_events')
 				,items: [{
 					html: _('fundzsevents_intro_msg')
 					,border: false

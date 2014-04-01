@@ -2,9 +2,9 @@
 /**
  * Get a list of Items
  */
-class fundzsEventsItemGetListProcessor extends modObjectGetListProcessor {
-	public $objectType = 'fundzsEventsItem';
-	public $classKey = 'fundzsEventsItem';
+class zsEventGetListProcessor extends modObjectGetListProcessor {
+	public $objectType = 'zsEvent';
+	public $classKey = 'zsEvent';
 	public $defaultSortField = 'id';
 	public $defaultSortDirection = 'DESC';
 	public $renderers = '';
@@ -33,4 +33,4 @@ class fundzsEventsItemGetListProcessor extends modObjectGetListProcessor {
 
 }
 
-return 'fundzsEventsItemGetListProcessor';
+return 'zsEventGetListProcessor';

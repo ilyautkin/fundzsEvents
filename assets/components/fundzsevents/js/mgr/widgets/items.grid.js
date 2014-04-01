@@ -7,7 +7,7 @@ fundzsEvents.grid.Items = function(config) {
 		,baseParams: {
 			action: 'mgr/item/getlist'
 		}
-		,fields: ['id','name','description']
+		,fields: ['id','name','city','description','owner']
 		,autoHeight: true
 		,paging: true
 		,remoteSort: true
@@ -15,10 +15,12 @@ fundzsEvents.grid.Items = function(config) {
 		,columns: [
 			{header: _('id'),dataIndex: 'id',width: 70}
 			,{header: _('name'),dataIndex: 'name',width: 200}
+			,{header: _('fundzsevents_event_city'),dataIndex: 'city',width: 200}
 			,{header: _('description'),dataIndex: 'description',width: 250}
+			,{header: _('fundzsevents_event_owner'),dataIndex: 'owner',width: 70}
 		]
 		,tbar: [{
-			text: _('fundzsevents_item_create')
+			text: _('fundzsevents_event_create')
 			,handler: this.createItem
 			,scope: this
 		}]
@@ -39,17 +41,17 @@ Ext.extend(fundzsEvents.grid.Items,MODx.grid.Grid,{
         var m = [];
         if (cs.split(',').length > 1) {
             m.push({
-    			text: _('fundzsevents_items_remove')
+    			text: _('fundzsevents_events_remove')
     			,handler: this.removeSelected
     		});
         } else {
     		m.push({
-    			text: _('fundzsevents_item_update')
+    			text: _('fundzsevents_event_update')
     			,handler: this.updateItem
     		});
     		m.push('-');
     		m.push({
-    			text: _('fundzsevents_item_remove')
+    			text: _('fundzsevents_event_remove')
     			,handler: this.removeItem
     		});
         }
@@ -102,8 +104,8 @@ Ext.extend(fundzsEvents.grid.Items,MODx.grid.Grid,{
 		if (!this.menu.record) return false;
 		
 		MODx.msg.confirm({
-			title: _('fundzsevents_item_remove')
-			,text: _('fundzsevents_item_remove_confirm')
+			title: _('fundzsevents_event_remove')
+			,text: _('fundzsevents_event_remove_confirm')
 			,url: this.config.url
 			,params: {
 				action: 'mgr/item/remove'
@@ -132,8 +134,8 @@ Ext.extend(fundzsEvents.grid.Items,MODx.grid.Grid,{
         if (cs === false) return false;
 
         MODx.msg.confirm({
-			title: _('fundzsevents_items_remove')
-			,text: _('fundzsevents_items_remove_confirm')
+			title: _('fundzsevents_events_remove')
+			,text: _('fundzsevents_events_remove_confirm')
 			,url: this.config.url
 			,params: {
                 action: 'mgr/items/remove'
@@ -160,7 +162,7 @@ fundzsEvents.window.CreateItem = function(config) {
 	config = config || {};
 	this.ident = config.ident || 'mecitem'+Ext.id();
 	Ext.applyIf(config,{
-		title: _('fundzsevents_item_create')
+		title: _('fundzsevents_event_create')
 		,id: this.ident
 		,height: 200
 		,width: 475
@@ -168,7 +170,15 @@ fundzsEvents.window.CreateItem = function(config) {
 		,action: 'mgr/item/create'
 		,fields: [
 			{xtype: 'textfield',fieldLabel: _('name'),name: 'name',id: 'fundzsevents-'+this.ident+'-name',anchor: '99%'}
+			,{xtype: 'textfield',fieldLabel: _('fundzsevents_event_city'),name: 'city',id: 'fundzsevents-'+this.ident+'-city',anchor: '99%'}
 			,{xtype: 'textarea',fieldLabel: _('description'),name: 'description',id: 'fundzsevents-'+this.ident+'-description',height: 150,anchor: '99%'}
+			,{xtype: 'textfield',fieldLabel: _('fundzsevents_event_owner'),name: 'owner',id: 'fundzsevents-'+this.ident+'-owner',anchor: '99%'}
+            
+            /*{header: _('id'),dataIndex: 'id',width: 70}
+			,{header: _('name'),dataIndex: 'name',width: 200}
+			,{header: _('city'),dataIndex: 'city',width: 200}
+			,{header: _('description'),dataIndex: 'description',width: 250}
+			,{header: _('owner'),dataIndex: 'owner',width: 70}*/
 		]
 		,keys: [{key: Ext.EventObject.ENTER,shift: true,fn: function() {this.submit() },scope: this}]
 	});
@@ -182,7 +192,7 @@ fundzsEvents.window.UpdateItem = function(config) {
 	config = config || {};
 	this.ident = config.ident || 'meuitem'+Ext.id();
 	Ext.applyIf(config,{
-		title: _('fundzsevents_item_update')
+		title: _('fundzsevents_event_update')
 		,id: this.ident
 		,height: 200
 		,width: 475
@@ -191,7 +201,9 @@ fundzsEvents.window.UpdateItem = function(config) {
 		,fields: [
 			{xtype: 'hidden',name: 'id',id: 'fundzsevents-'+this.ident+'-id'}
 			,{xtype: 'textfield',fieldLabel: _('name'),name: 'name',id: 'fundzsevents-'+this.ident+'-name',anchor: '99%'}
+			,{xtype: 'textfield',fieldLabel: _('fundzsevents_event_city'),name: 'city',id: 'fundzsevents-'+this.ident+'-city',anchor: '99%'}
 			,{xtype: 'textarea',fieldLabel: _('description'),name: 'description',id: 'fundzsevents-'+this.ident+'-description',height: 150,anchor: '99%'}
+			,{xtype: 'textfield',fieldLabel: _('fundzsevents_event_owner'),name: 'owner',id: 'fundzsevents-'+this.ident+'-owner',anchor: '99%'}
 		]
 		,keys: [{key: Ext.EventObject.ENTER,shift: true,fn: function() {this.submit() },scope: this}]
 	});
