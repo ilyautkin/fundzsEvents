@@ -134,5 +134,26 @@ class fundzsEvents {
 
 		return $chunk;
 	}
+	
+	public function dateFormat(array $data, $get) {
+		$dateArr = explode('.', $data['date']);
+		$data['date'] = $dateArr[2].'-'.$dateArr[1].'-'.$dateArr[0];
+		if ($get == 'end') {
+		    $output = $data['date'].' '.$data['end'].':00';
+		} else {
+		    $output = $data['date'].' '.$data['begin'].':00';
+		}
+		return $output;
+	}
+	
+	public function attend($event_id) {
+	    $partisipData = array('uid' => $this->modx->user->id, 'event' => $event_id);
+		if ($partisip = $this->modx->getObject('zsParticipant', $partisipData)) {
+		    $partisip->remove();
+		} else {
+		    $partisip = $this->modx->newObject('zsParticipant', $partisipData);
+		    $partisip->save();
+		}
+	}
 
 }

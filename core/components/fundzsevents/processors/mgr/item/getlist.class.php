@@ -27,7 +27,9 @@ class zsEventGetListProcessor extends modObjectGetListProcessor {
 	 */
 	public function prepareRow(xPDOObject $object) {
 		$array = $object->toArray();
-
+		$owner = $object->getOne('User');
+		$ownerProfile = $owner->getOne('Profile');
+        $array['owner_fullname'] = $ownerProfile->get('fullname');
 		return $array;
 	}
 

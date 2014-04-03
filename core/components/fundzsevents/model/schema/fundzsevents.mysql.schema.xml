@@ -6,6 +6,7 @@
 		<field key="city" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
 		<field key="begin" dbtype="datetime" phptype="datetime" null="true" index="index" />
 		<field key="end" dbtype="datetime" phptype="datetime" null="true" index="index" />
+		<field key="address" dbtype="varchar" precision="255" phptype="string" null="true" default="" />
 		<field key="description" dbtype="text" phptype="text" null="true" default="" />
 		<field key="comment" dbtype="text" phptype="text" null="true" default="" />
 		<field key="owner" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" index="index" />

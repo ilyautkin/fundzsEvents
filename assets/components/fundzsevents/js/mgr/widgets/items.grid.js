@@ -7,17 +7,17 @@ fundzsEvents.grid.Items = function(config) {
 		,baseParams: {
 			action: 'mgr/item/getlist'
 		}
-		,fields: ['id','name','city','description','owner']
+		,fields: ['id','name','city','address','owner_fullname']
 		,autoHeight: true
 		,paging: true
 		,remoteSort: true
         ,sm: this.sm
 		,columns: [
-			{header: _('id'),dataIndex: 'id',width: 70}
+			{header: _('id'),dataIndex: 'id',width: 30}
 			,{header: _('name'),dataIndex: 'name',width: 200}
-			,{header: _('fundzsevents_event_city'),dataIndex: 'city',width: 200}
-			,{header: _('description'),dataIndex: 'description',width: 250}
-			,{header: _('fundzsevents_event_owner'),dataIndex: 'owner',width: 70}
+			,{header: _('fundzsevents_event_city'),dataIndex: 'city',width: 80}
+			,{header: _('fundzsevents_event_address'),dataIndex: 'address',width: 150}
+			,{header: _('fundzsevents_event_owner'),dataIndex: 'owner_fullname',width: 100}
 		]
 		,tbar: [{
 			text: _('fundzsevents_event_create')
@@ -57,7 +57,7 @@ Ext.extend(fundzsEvents.grid.Items,MODx.grid.Grid,{
         }
 		this.addContextMenuItem(m);
 	}
-	
+
 	,createItem: function(btn,e) {
 		if (!this.windows.createItem) {
 			this.windows.createItem = MODx.load({
@@ -173,6 +173,8 @@ fundzsEvents.window.CreateItem = function(config) {
 			,{xtype: 'textfield',fieldLabel: _('fundzsevents_event_city'),name: 'city',id: 'fundzsevents-'+this.ident+'-city',anchor: '99%'}
 			,{xtype: 'textarea',fieldLabel: _('description'),name: 'description',id: 'fundzsevents-'+this.ident+'-description',height: 150,anchor: '99%'}
 			,{xtype: 'textfield',fieldLabel: _('fundzsevents_event_owner'),name: 'owner',id: 'fundzsevents-'+this.ident+'-owner',anchor: '99%'}
+			,{xtype: 'textfield',fieldLabel: _('fundzsevents_event_address'),name: 'address',id: 'fundzsevents-'+this.ident+'-address',anchor: '99%'}
+			,{xtype: 'textarea',fieldLabel: _('fundzsevents_event_comment'),name: 'comment',id: 'fundzsevents-'+this.ident+'-comment',height: 150, anchor: '99%'}
             
             /*{header: _('id'),dataIndex: 'id',width: 70}
 			,{header: _('name'),dataIndex: 'name',width: 200}
@@ -204,6 +206,8 @@ fundzsEvents.window.UpdateItem = function(config) {
 			,{xtype: 'textfield',fieldLabel: _('fundzsevents_event_city'),name: 'city',id: 'fundzsevents-'+this.ident+'-city',anchor: '99%'}
 			,{xtype: 'textarea',fieldLabel: _('description'),name: 'description',id: 'fundzsevents-'+this.ident+'-description',height: 150,anchor: '99%'}
 			,{xtype: 'textfield',fieldLabel: _('fundzsevents_event_owner'),name: 'owner',id: 'fundzsevents-'+this.ident+'-owner',anchor: '99%'}
+			,{xtype: 'textfield',fieldLabel: _('fundzsevents_event_address'),name: 'address',id: 'fundzsevents-'+this.ident+'-address',anchor: '99%'}
+			,{xtype: 'textarea',fieldLabel: _('fundzsevents_event_comment'),name: 'comment',id: 'fundzsevents-'+this.ident+'-comment',height: 150, anchor: '99%'}
 		]
 		,keys: [{key: Ext.EventObject.ENTER,shift: true,fn: function() {this.submit() },scope: this}]
 	});

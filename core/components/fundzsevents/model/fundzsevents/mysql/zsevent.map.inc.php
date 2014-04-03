@@ -10,6 +10,7 @@ $xpdo_meta_map['zsEvent']= array (
     'city' => '',
     'begin' => NULL,
     'end' => NULL,
+    'address' => '',
     'description' => '',
     'comment' => '',
     'owner' => 0,
@@ -45,6 +46,14 @@ $xpdo_meta_map['zsEvent']= array (
       'phptype' => 'datetime',
       'null' => true,
       'index' => 'index',
+    ),
+    'address' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => true,
+      'default' => '',
     ),
     'description' => 
     array (

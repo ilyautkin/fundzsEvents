@@ -12,13 +12,23 @@ class zsEventCreateProcessor extends modObjectCreateProcessor {
 	 * @return bool
 	 */
 	public function beforeSet() {
-		/*$alreadyExists = $this->modx->getObject('fundzsEventsItem', array(
-			'name' => $this->getProperty('name'),
-		));
-		if ($alreadyExists) {
-			$this->modx->error->addField('name', $this->modx->lexicon('fundzsevents_item_err_ae'));
-		}*/
+		$required = array('name','city','description');
+		foreach ($required as $tmp) {
+			if (!$this->getProperty($tmp)) {
+				$this->addFieldError($tmp, $this->modx->lexicon('field_required'));
+			}
+		}
 
+		if ($this->hasErrors()) {
+			return false;
+		}
+
+		if (!$this->getProperty('owner')) {
+			$this->setProperty('owner', $this->modx->user->id);
+		}
+		if (!$this->getProperty('begin')) {
+			$this->setProperty('begin', time());
+		}
 		return !$this->hasErrors();
 	}
 

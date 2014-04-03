@@ -18,4 +18,6 @@ $_lang['fundzsevents_event_remove_confirm'] = 'Вы уверены, что хо�
 $_lang['fundzsevents_event_update'] = 'Изменить событие';
 $_lang['fundzsevents_event_city'] = 'Город';
 $_lang['fundzsevents_event_owner'] = 'Организатор';
+$_lang['fundzsevents_event_comment'] = 'Комментарий';
+$_lang['fundzsevents_event_address'] = 'Адрес';
 $_lang['fundzsevents_intro_msg'] = 'События фонда «Здоровая Страна»';
